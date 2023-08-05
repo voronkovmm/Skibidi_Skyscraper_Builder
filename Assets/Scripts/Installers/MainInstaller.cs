@@ -9,6 +9,7 @@ public class MainInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
+        BindData();
         BindGameData();
         BindPopupTextService();
         BindBuildingBlockFactory();
@@ -17,12 +18,18 @@ public class MainInstaller : MonoInstaller
         BindView();
     }
 
+    private void BindData()
+    {
+        Container.Bind<AccountManager>().FromComponentInHierarchy().AsSingle();
+    }
+
     private void BindPopup()
     {
         Container.Bind<PopupSettings>().FromComponentInHierarchy().AsSingle();
         Container.Bind<PopupLeaderboard>().FromComponentInHierarchy().AsSingle();
         Container.Bind<PopupAchivements>().FromComponentInHierarchy().AsSingle();
         Container.Bind<PopupPause>().FromComponentInHierarchy().AsSingle();
+        Container.Bind<PopupChouseBlockAsset>().FromComponentInHierarchy().AsSingle();
     }
 
     private void BindView()
