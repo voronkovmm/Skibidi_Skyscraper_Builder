@@ -3,26 +3,21 @@ using System.Collections;
 using UnityEngine;
 using Zenject;
 
-// Реализовать: вычет очков при падении блока в методе 
 public class BuildingBlock : MonoBehaviour
 {
+    [Inject] private BuildingManager buildingManager;
+    [Inject] private PopupTextService popupText;
+    
     private int poolIndex;
     private bool isFalling = true;
     private BlockPool pool;
     private SpriteRenderer spriteRenderer;
-    private PopupTextService popupText;
-    private BuildingManager buildingManager;
     private Rigidbody2D rigidbody2d;
     private FixedJoint2D joint;
     private Tween tween;
 
     public class Factory : PlaceholderFactory<BuildingBlock>{}
-    [Inject]
-    private void Construct(PopupTextService popupText, BuildingManager buildingManager)
-    {
-        this.popupText = popupText;
-        this.buildingManager = buildingManager;
-    }
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -56,6 +51,8 @@ public class BuildingBlock : MonoBehaviour
         rigidbody2d.bodyType = RigidbodyType2D.Kinematic;
         isFalling = true;
         transform.position = position;
+
+        spriteRenderer.flipX = Random.Range(0, 2) == 0 ? true : false;
     }
     public void Deactivate()
     {

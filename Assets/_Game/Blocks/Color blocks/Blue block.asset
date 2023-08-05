@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e31040198fcb81e4bb88a3de0ad5247c, type: 3}
   m_Name: Blue block
   m_EditorClassIdentifier: 
-  blockType: 4
-  sprite: {fileID: -2115309868, guid: 186e973048d0a83498bb74d53dc18443, type: 3}
+  sprite: {fileID: -198147970, guid: 192d695e0925b420ba4cb65d2ee1164e, type: 3}

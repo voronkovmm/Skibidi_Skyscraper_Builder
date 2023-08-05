@@ -5,15 +5,28 @@ public class MainInstaller : MonoInstaller
 {
     [SerializeField] private BuildingManager buildingManager;
     [SerializeField] private LoaderAsset[] loaderAssets;
-    private int indexLoaderAsset;
+    public int indexLoaderAsset;
 
     public override void InstallBindings()
     {
-        indexLoaderAsset = 0;
         BindGameData();
         BindPopupTextService();
         BindBuildingBlockFactory();
         BindBuildingManager();
+        BindPopup();
+        BindView();
+    }
+
+    private void BindPopup()
+    {
+        Container.Bind<PopupSettings>().FromComponentInHierarchy().AsSingle();
+        Container.Bind<PopupLeaderboard>().FromComponentInHierarchy().AsSingle();
+        Container.Bind<PopupAchivements>().FromComponentInHierarchy().AsSingle();
+    }
+
+    private void BindView()
+    {
+        Container.Bind<ViewMenu>().FromComponentInHierarchy().AsSingle();
     }
 
     private void BindBuildingManager()
