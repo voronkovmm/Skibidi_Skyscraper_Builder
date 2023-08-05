@@ -22,11 +22,13 @@ public class MainInstaller : MonoInstaller
         Container.Bind<PopupSettings>().FromComponentInHierarchy().AsSingle();
         Container.Bind<PopupLeaderboard>().FromComponentInHierarchy().AsSingle();
         Container.Bind<PopupAchivements>().FromComponentInHierarchy().AsSingle();
+        Container.Bind<PopupPause>().FromComponentInHierarchy().AsSingle();
     }
 
     private void BindView()
     {
         Container.Bind<ViewMenu>().FromComponentInHierarchy().AsSingle();
+        Container.Bind<ViewGame>().FromComponentInHierarchy().AsSingle();
     }
 
     private void BindBuildingManager()

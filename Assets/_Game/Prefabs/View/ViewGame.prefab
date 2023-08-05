@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1973944085166418730
 RectTransform:
   m_ObjectHideFlags: 0
@@ -158,9 +158,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2804730211966308256}
-        m_TargetAssemblyTypeName: ViewMenu, Assembly-CSharp
-        m_MethodName: BtnSettings
+      - m_Target: {fileID: 3005168280863897729}
+        m_TargetAssemblyTypeName: ViewGame, Assembly-CSharp
+        m_MethodName: BtnPause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7165566232536845703}
-  - component: {fileID: 2804730211966308256}
+  - component: {fileID: 3005168280863897729}
   m_Layer: 5
   m_Name: ViewGame
   m_TagString: Untagged
@@ -208,7 +208,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2804730211966308256
+--- !u!114 &3005168280863897729
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -217,7 +217,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7801099343621194128}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69d4b3dc3281b8b438d5595d01494d28, type: 3}
+  m_Script: {fileID: 11500000, guid: dc69cd6b22f403f4ead13a15fe54d922, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   container: {fileID: 2186508390532208160}
