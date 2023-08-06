@@ -1068,9 +1068,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2038a1de4b86054aa0dea6250822218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownNewBlock: 0.5
-  hook: {fileID: 1116944555}
-  <HeightBuilding>k__BackingField: 0
 --- !u!1 &1067008579
 GameObject:
   m_ObjectHideFlags: 0
