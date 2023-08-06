@@ -1,10 +1,10 @@
 ﻿public class DataSkinAsset
 {
-    public int CurrentAsset { get; private set; }
+    public EnumSkinAsset CurrentAsset { get; private set; }
     public bool IsSkibidiUnlocked { get; private set; }
     public bool IsBarbieUnlocked { get; private set; }
 
-    public void SetCurrent(EnumSkinAsset skinType) => CurrentAsset = (int)skinType;
+    public void SetCurrent(EnumSkinAsset skinType) => CurrentAsset = skinType;
 
     public void Unlock(EnumSkinAsset skinType)
     {

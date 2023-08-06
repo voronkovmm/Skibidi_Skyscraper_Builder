@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-public class MainInstaller : MonoInstaller
+public class Installer : MonoInstaller
 {
     [SerializeField] private BuildingManager buildingManager;
     [SerializeField] private LoaderAsset[] loaderAssets;
@@ -12,15 +12,21 @@ public class MainInstaller : MonoInstaller
         BindData();
         BindGameData();
         BindPopupTextService();
-        BindBuildingBlockFactory();
         BindBuildingManager();
         BindPopup();
         BindView();
+
+        Container.Bind<HookManager>()
+                    .FromComponentInHierarchy()
+                    .AsSingle();
+
+        Container.Bind<GameManager>().FromComponentInHierarchy().AsSingle();
     }
 
     private void BindData()
     {
         Container.Bind<AccountManager>().FromComponentInHierarchy().AsSingle();
+        Container.Bind<DataManager>().FromComponentInHierarchy().AsSingle();
     }
 
     private void BindPopup()
@@ -62,18 +68,6 @@ public class MainInstaller : MonoInstaller
         Container.Bind<GameData>()
                     .FromNew()
                     .AsSingle()
-                    .WithArguments(loaderAssets[indexLoaderAsset])
                     .NonLazy();
-    }
-
-    private void BindBuildingBlockFactory()
-    {
-        Container.Bind<BuildingBlockFactory>()
-            .FromNew()
-            .AsSingle()
-            .WithArguments(loaderAssets[indexLoaderAsset])
-            .NonLazy();
-
-        Container.BindFactory<BuildingBlock, BuildingBlock.Factory>().FromComponentInNewPrefab(loaderAssets[indexLoaderAsset].blockPrefab);
     }
 }

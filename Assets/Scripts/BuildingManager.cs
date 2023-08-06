@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using UnityEngine;
-using Zenject;
 
 public class BuildingManager : MonoBehaviour
 {

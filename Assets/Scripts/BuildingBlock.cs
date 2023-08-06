@@ -10,13 +10,11 @@ public class BuildingBlock : MonoBehaviour
     
     private int poolIndex;
     private bool isFalling = true;
-    private BlockPool pool;
+    private BlockFactory pool;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rigidbody2d;
     private FixedJoint2D joint;
     private Tween tween;
-
-    public class Factory : PlaceholderFactory<BuildingBlock>{}
 
     private void Awake()
     {
@@ -60,7 +58,7 @@ public class BuildingBlock : MonoBehaviour
         pool.Return(this, poolIndex);
         gameObject.SetActive(false);
     }
-    public void Initialize(BlockPool pool, int poolIndex, Sprite sprite)
+    public void Initialize(BlockFactory pool, int poolIndex, Sprite sprite)
     {
         this.pool = pool;
         this.poolIndex = poolIndex;

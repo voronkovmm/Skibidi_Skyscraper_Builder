@@ -4,6 +4,8 @@ using Zenject;
 
 public class HookManager : MonoBehaviour
 {
+    [Inject] private DataManager dataManager;
+
     [SerializeField] private float radiusY = 0.25f;
     [SerializeField] private float radiusX = 1f;
     [SerializeField] private float speed = 2f;
@@ -23,25 +25,29 @@ public class HookManager : MonoBehaviour
     private Vector3 startPos;
     private BuildingManager buildingManager;
     private GameData gameData;
-    private BuildingBlockFactory blockFactory;
+    private BlockFactory blockFactory;
 
     [Inject]
-    private void Construct(BuildingManager buildingManager, GameData gameData, BuildingBlockFactory blockFactory)
+    private void Construct(BuildingManager buildingManager, GameData gameData)
     {
         this.buildingManager = buildingManager;
         this.gameData = gameData;
-        this.blockFactory = blockFactory;
+    }
+
+    public void Initiailize()
+    {
+        blockFactory = new BlockFactory(dataManager.GetLoaderAsset());
+        CreateNewBlock();
     }
 
     private void Start()
     {
         centerPosition = startPos = transform.position;
-        CreateNewBlock();
     }
 
     private void CreateNewBlock()
     {
-        BuildingBlock buildingBlock = blockFactory.NewBlock(transform.position + Vector3.down * offsetSpawnPosition);
+        BuildingBlock buildingBlock = blockFactory.Get(transform.position + Vector3.down * offsetSpawnPosition);
         Transform blockTransform = buildingBlock.transform;
         currentBlock = buildingBlock;
         blockTransform.SetParent(transform);
@@ -60,7 +66,7 @@ public class HookManager : MonoBehaviour
         CircleMovement();
     }
 
-    private void OnEnable()
+    /*private void OnEnable()
     {
         buildingManager.OnNewBuildingBlock += OnNewBuildingBlock;
     }
@@ -68,7 +74,7 @@ public class HookManager : MonoBehaviour
     private void OnDisable()
     {
         buildingManager.OnNewBuildingBlock -= OnNewBuildingBlock;
-    }
+    }*/
 
     private void CircleMovement()
     {
@@ -83,7 +89,7 @@ public class HookManager : MonoBehaviour
 
     private void Move()
     {
-        float height = gameData.HeightBuildingBlock;
+        float height = GameData.HeightBuildingBlock;
         int heightBuilding = buildingManager.HeightBuilding;
         int skipBlocksForMovement = gameData.SkipBlocksForMovement;
 

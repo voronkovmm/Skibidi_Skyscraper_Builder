@@ -1,22 +1,16 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-
-public class BlockPool
+public class BlockFactory
 {
     private LoaderAsset loaderAsset;
-    private BuildingBlock.Factory factory;
     private Dictionary<int, Queue<BuildingBlock>> pool;
 
-    public BlockPool(LoaderAsset loaderAsset, BuildingBlock.Factory factory)
+    public BlockFactory(LoaderAsset loaderAsset)
     {
         this.loaderAsset = loaderAsset;
-        this.factory = factory;
-        pool = new(loaderAsset.blocks.Length);
-        for (int i = 0; i < loaderAsset.blocks.Length; i++)
-        {
-            pool.Add(i, new Queue<BuildingBlock>());
-        }
+
+        CreatePool();
     }
 
     public BuildingBlock Get(Vector3 position)
@@ -37,9 +31,18 @@ public class BlockPool
 
     private BuildingBlock Create(int indexBlock)
     {
-        //BuildingBlock instance = Object.Instantiate(loaderAsset.blockPrefab);
-        BuildingBlock instance = factory.Create();
+        BuildingBlock instance = Object.Instantiate(loaderAsset.blockPrefab);
         instance.Initialize(this, indexBlock, loaderAsset.blocks[indexBlock].sprite);
         return instance;
+    }
+
+    private void CreatePool()
+    {
+        pool = new(loaderAsset.blocks.Length);
+
+        for (int i = 0; i < loaderAsset.blocks.Length; i++)
+        {
+            pool.Add(i, new Queue<BuildingBlock>());
+        }
     }
 }

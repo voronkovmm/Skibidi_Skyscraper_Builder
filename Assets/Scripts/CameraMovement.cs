@@ -17,13 +17,13 @@ public class CameraMovement : MonoBehaviour
     }
     private void Awake() => startPos = transform.position;
 
-    private void OnEnable() => buildingManager.OnNewBuildingBlock += OnNewBuildingBlock;
+    /*private void OnEnable() => buildingManager.OnNewBuildingBlock += OnNewBuildingBlock;
 
-    private void OnDisable() => buildingManager.OnNewBuildingBlock -= OnNewBuildingBlock;
+    private void OnDisable() => buildingManager.OnNewBuildingBlock -= OnNewBuildingBlock;*/
 
     private void Move()
     {
-        float height = gameData.HeightBuildingBlock;
+        float height = GameData.HeightBuildingBlock;
         int heightBuilding = buildingManager.HeightBuilding;
         int skipBlocksForMovement = gameData.SkipBlocksForMovement;
 
