@@ -4,6 +4,6 @@
 public class LoaderAsset : ScriptableObject
 {
     public BlockAsset[] blocks;
-    public BuildingBlock blockPrefab;
+    public Block blockPrefab;
     public PopupText popupTextPrefab;
 }

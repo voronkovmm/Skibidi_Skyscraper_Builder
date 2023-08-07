@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Zenject;
 
-public class GameData
+public class DataGame
 {
     [Inject] private DataManager dataManager;
     private LoaderAsset loaderAsset;

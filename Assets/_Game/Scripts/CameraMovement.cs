@@ -4,13 +4,13 @@ using Zenject;
 
 public class CameraMovement : MonoBehaviour
 {
-    private GameData gameData;
+    private DataGame gameData;
     private BuildingManager buildingManager;
     private Tweener tweener;
     private Vector3 startPos;
 
     [Inject]
-    private void Construct(GameData gameData, BuildingManager buildingManager)
+    private void Construct(DataGame gameData, BuildingManager buildingManager)
     {
         this.gameData = gameData;
         this.buildingManager = buildingManager;
@@ -23,7 +23,7 @@ public class CameraMovement : MonoBehaviour
 
     private void Move()
     {
-        float height = GameData.HeightBuildingBlock;
+        float height = DataGame.HeightBuildingBlock;
         int heightBuilding = buildingManager.HeightBuilding;
         int skipBlocksForMovement = gameData.SkipBlocksForMovement;
 

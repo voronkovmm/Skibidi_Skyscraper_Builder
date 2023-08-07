@@ -4,13 +4,14 @@ using Zenject;
 public class GameManager : MonoBehaviour
 {
     [Inject] private ViewMenu viewMenu;
-    [Inject] private HookManager hookManager;
-    [Inject] private GameData gameData;
+    [Inject] private DataGame gameData;
+    [Inject] private BuildingManager buildingManager;
 
     public static bool IsPause { get; private set; }
 
     private void Start()
     {
+        Pause();
         viewMenu.Open();
     }
 
@@ -20,7 +21,8 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        hookManager.Initiailize();
         gameData.Initiailize();
+        buildingManager.Initialize();
+        Play();
     }
 }
