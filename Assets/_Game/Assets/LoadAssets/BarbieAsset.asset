@@ -18,5 +18,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 47d69ae41da360048bb9e6a162e5dcfd, type: 2}
   - {fileID: 11400000, guid: 1d76c0a56dccf09408e288553a158df9, type: 2}
   - {fileID: 11400000, guid: 647caaf99460fed4f9ddcbd21ebb5bff, type: 2}
-  blockPrefab: {fileID: 1433169416890379399, guid: 4d542624787b0bf4c8464d4377954e02, type: 3}
+  blockPrefab: {fileID: 5627741338130740108, guid: 4d542624787b0bf4c8464d4377954e02, type: 3}
   popupTextPrefab: {fileID: 5121596030407958761, guid: 7232fe61cc268184dabac74d25e4a60d, type: 3}
