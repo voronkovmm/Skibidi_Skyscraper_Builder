@@ -200,7 +200,7 @@ TextureImporter:
         height: 504
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 242, y: 239, z: 232, w: 245}
+      border: {x: 109, y: 117, z: 116, w: 114}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -446,8 +446,8 @@ TextureImporter:
       name: People_0
       rect:
         serializedVersion: 2
-        x: 1271
-        y: 341
+        x: 1473
+        y: 347
         width: 149
         height: 317
       alignment: 0
@@ -467,8 +467,8 @@ TextureImporter:
       name: People_1
       rect:
         serializedVersion: 2
-        x: 1492
-        y: 341
+        x: 1693
+        y: 347
         width: 149
         height: 317
       alignment: 0
@@ -488,8 +488,8 @@ TextureImporter:
       name: People_2
       rect:
         serializedVersion: 2
-        x: 1701
-        y: 341
+        x: 1903
+        y: 347
         width: 281
         height: 446
       alignment: 0
@@ -501,6 +501,111 @@ TextureImporter:
       bones: []
       spriteID: 568817bb3eadc45eeaa662bbac784ae4
       internalID: 1224904622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BtnBack
+      rect:
+        serializedVersion: 2
+        x: 1612
+        y: 1962
+        width: 506
+        height: 503
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d527566d3c3670479359ba28b625995
+      internalID: -267132876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LangEN
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 59
+        width: 371
+        height: 346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b72b2eaa00c074b498e6714c496970ea
+      internalID: 845774054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LangRUS
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 59
+        width: 370
+        height: 346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15a6af6b7eb792c4993b5ea170e1a348
+      internalID: -1784849112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lock
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 60
+        width: 203
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f02fb0be09ba6d643bdb7e4a0f5e0ae8
+      internalID: 372938052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chain
+      rect:
+        serializedVersion: 2
+        x: 916
+        y: 89
+        width: 355
+        height: 363
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dadb998747ecc97469cc26e10a0ac750
+      internalID: -756153117
       vertices: []
       indices: 
       edges: []
@@ -518,13 +623,18 @@ TextureImporter:
     nameFileIdTable:
       BlueBlock: -198147970
       BtnAchivements: -1765922843
+      BtnBack: -267132876
       BtnBackground: 1281963130
       BtnLeaders: 1178507508
       BtnPlay: 1037146637
       BtnSettings: 1489709093
+      Chain: -756153117
       Fixation: 2071705482
       GreenBlock: 1214334052
       Hook: 32188577
+      LangEN: 845774054
+      LangRUS: -1784849112
+      Lock: 372938052
       People_0: -224520861
       People_1: 978339639
       People_2: 1224904622
