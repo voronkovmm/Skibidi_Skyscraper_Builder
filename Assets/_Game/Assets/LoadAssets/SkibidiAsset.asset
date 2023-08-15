@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50099dca43df4a44d8e130aca1903afc, type: 3}
   m_Name: SkibidiAsset
   m_EditorClassIdentifier: 
-  blocks:
+  BlockAssets:
   - {fileID: 11400000, guid: 453b0bcda26754f4992ab9de02f531b7, type: 2}
   - {fileID: 11400000, guid: 7b42b6c559290a14db0420ab6ce838dc, type: 2}
-  - {fileID: 11400000, guid: 177bab4a2afd949408f741594af80aa1, type: 2}
   - {fileID: 11400000, guid: 9be4d1f35b3a3d64e8f9068c983cdbe9, type: 2}
-  blockPrefab: {fileID: 5627741338130740108, guid: 4d542624787b0bf4c8464d4377954e02, type: 3}
-  popupTextPrefab: {fileID: 5121596030407958761, guid: 7232fe61cc268184dabac74d25e4a60d, type: 3}
+  - {fileID: 11400000, guid: 177bab4a2afd949408f741594af80aa1, type: 2}
+  BlockPrefab: {fileID: 5627741338130740108, guid: 4d542624787b0bf4c8464d4377954e02, type: 3}
+  PopupTextPrefab: {fileID: 0}

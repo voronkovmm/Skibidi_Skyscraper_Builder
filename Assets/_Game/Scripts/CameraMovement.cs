@@ -4,34 +4,22 @@ using Zenject;
 
 public class CameraMovement : MonoBehaviour
 {
-    private DataGame gameData;
-    private BuildingManager buildingManager;
-    private Tweener tweener;
-    private Vector3 startPos;
+    [Inject] private BuildingManager BuildingManager;
 
-    [Inject]
-    private void Construct(DataGame gameData, BuildingManager buildingManager)
-    {
-        this.gameData = gameData;
-        this.buildingManager = buildingManager;
-    }
+    private Vector3 startPos;
+    private Tweener tweenerMovement;
+
     private void Awake() => startPos = transform.position;
 
-    /*private void OnEnable() => buildingManager.OnNewBuildingBlock += OnNewBuildingBlock;
-
-    private void OnDisable() => buildingManager.OnNewBuildingBlock -= OnNewBuildingBlock;*/
-
-    private void Move()
+    public void Move()
     {
-        float height = DataGame.HeightBuildingBlock;
-        int heightBuilding = buildingManager.HeightBuilding;
-        int skipBlocksForMovement = gameData.SkipBlocksForMovement;
-
-        if (heightBuilding < skipBlocksForMovement) return;
-
-        tweener.Kill();
-        tweener = transform.DOMoveY(startPos.y + (heightBuilding - skipBlocksForMovement) * height, 1f);
+        tweenerMovement.Kill();
+        tweenerMovement = transform.DOMoveY(startPos.y + (BuildingManager.HeightBuilding - BuildingManager.SkipBlocksForMovement) * BuildingManager.BlockHeight, 1f);
     }
 
-    private void OnNewBuildingBlock() => Move();
+    public void Restart()
+    {
+        tweenerMovement.Kill();
+        transform.position = startPos;
+    }
 }

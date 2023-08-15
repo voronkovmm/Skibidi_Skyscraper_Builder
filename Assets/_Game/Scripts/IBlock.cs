@@ -2,6 +2,8 @@
 
 public interface IBlock
 {
+    public GameObject GameObject { get; }
+
     public void Activate(Vector3 position);
 
     public void Deactivate();

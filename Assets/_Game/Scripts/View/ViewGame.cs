@@ -4,22 +4,25 @@ using Zenject;
 public class ViewGame : MonoBehaviour
 {
     [Inject] private PopupPause popupPause;
-    [Inject] private GameManager gameManager;
-
+    [Inject] private BuildingManager buildingManager;
 
     [SerializeField] private GameObject container;
+
+    public bool IsGame;
 
     public void BtnPause() => popupPause.Open();
 
     public void Open()
     {
-        gameManager.StartGame();
-
+        IsGame = true;
+        buildingManager.Initialize();
         container.SetActive(true);
     }
 
     public void Close()
     {
+        IsGame = false;
+        buildingManager.OnExitMenu();
         container.SetActive(false);
     }
 }

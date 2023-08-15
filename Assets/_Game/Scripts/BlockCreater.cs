@@ -5,11 +5,12 @@ using Zenject;
 public class BlockCreater
 {
     [Inject] private DiContainer Container;
-    [Inject] private DataManager DataManager;
+    [Inject] private AccountManager AccountManager;
 
     private LoaderAsset loaderAsset;
 
-    private Dictionary<int, Queue<IBlock>> pool;
+    private Queue<IBlock> pool;
+    private List<IBlock> destroyedList;
 
     public void Initialize() => CreatePool();
 
@@ -17,34 +18,40 @@ public class BlockCreater
     {
         int blockIndex = Random.Range(0, pool.Count);
 
-        if (pool[blockIndex].Count == 0)
+        if (pool.Count == 0)
         {
-            pool[blockIndex].Enqueue(Create(blockIndex));
+            pool.Enqueue(Create(blockIndex));
         }
 
-        IBlock instance = pool[blockIndex].Dequeue();
+        IBlock instance = pool.Dequeue();
         instance.Activate(position);
         return instance;
     }
 
-    public void Return(IBlock buildingBlock, int index) => pool[index].Enqueue(buildingBlock);
+    public void Return(IBlock buildingBlock, int index) => pool.Enqueue(buildingBlock);
+
+    public void DestroyAll()
+    {
+        destroyedList.ForEach(_ => GameObject.Destroy(_.GameObject));
+
+        destroyedList.Clear();
+        pool.Clear();
+    }
 
     private IBlock Create(int indexBlock)
     {
-        IBlock instance = Container.InstantiatePrefab(loaderAsset.blockPrefab.gameObject).GetComponent<IBlock>();
-        instance.Initialize(this, indexBlock, loaderAsset.blocks[indexBlock].sprite);
+        IBlock instance = Container.InstantiatePrefab(loaderAsset.BlockPrefab.gameObject).GetComponent<IBlock>();
+        instance.Initialize(this, indexBlock, loaderAsset.BlockAssets[indexBlock].sprite);
+        destroyedList.Add(instance);
+        instance.GameObject.name = $"block({destroyedList.Count})";
         return instance;
     }
 
     private void CreatePool()
     {
-        loaderAsset = DataManager.GetLoaderAsset();
+        loaderAsset = AccountManager.LoaderAsset;
 
-        pool = new(loaderAsset.blocks.Length);
-
-        for (int i = 0; i < loaderAsset.blocks.Length; i++)
-        {
-            pool.Add(i, new Queue<IBlock>());
-        }
+        destroyedList = new();
+        pool = new();
     }
 }
