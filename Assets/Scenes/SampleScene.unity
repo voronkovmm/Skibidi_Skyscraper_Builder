@@ -158,7 +158,6 @@ Transform:
   m_Children:
   - {fileID: 1067008580}
   - {fileID: 913514575}
-  - {fileID: 422101361}
   - {fileID: 417093425}
   - {fileID: 1466537650}
   - {fileID: 380995973}
@@ -287,50 +286,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   indexLoaderAsset: 1
---- !u!1 &422101359
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 422101361}
-  - component: {fileID: 422101360}
-  m_Layer: 0
-  m_Name: Game Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &422101360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 422101359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1438d7e20d085fd45b15b0a706199f4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &422101361
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 422101359}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 284561487}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &435422154
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1065,7 +1020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c8834f5160d04d4fbe0a0e895ebeb0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loaderAssets:
+  <LoaderAssets>k__BackingField:
   - {fileID: 11400000, guid: ed149a3d0e79d5d46a6fec0a2c67b028, type: 2}
   - {fileID: 11400000, guid: 012023fca9dc7ea43934c8690b775178, type: 2}
 --- !u!1 &1067008579
@@ -1889,6 +1844,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1290574973}
     m_Modifications:
+    - target: {fileID: 2804730211966308256, guid: a5a87046f347b8b4e94d37f7f108b2e6, type: 3}
+      propertyPath: EnableGame
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7165566232536845703, guid: a5a87046f347b8b4e94d37f7f108b2e6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

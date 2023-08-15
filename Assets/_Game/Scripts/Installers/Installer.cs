@@ -6,11 +6,9 @@ public class Installer : MonoInstaller
 
     public override void InstallBindings()
     {
-        Container.Bind<AccountManager>().FromComponentInHierarchy().AsSingle();
+        Container.Bind<AccountManager>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.Bind<DataManager>().FromComponentInHierarchy().AsSingle();
-        Container.Bind<GameManager>().FromComponentInHierarchy().AsSingle();
         Container.Bind<BuildingManager>().FromComponentInHierarchy().AsSingle();
-        Container.Bind<DataGame>().FromNew().AsSingle();
 
         Container.Bind<ViewMenu>().FromComponentInHierarchy().AsSingle();
         Container.Bind<ViewGame>().FromComponentInHierarchy().AsSingle();
@@ -21,11 +19,11 @@ public class Installer : MonoInstaller
         Container.Bind<PopupPause>().FromComponentInHierarchy().AsSingle();
         Container.Bind<PopupChouseBlockAsset>().FromComponentInHierarchy().AsSingle();
 
-        BindPopupTextService();
+        Container.Bind<CameraMovement>().FromComponentInHierarchy().AsSingle();
 
         Container.Bind<BlockCreater>().FromNew().AsSingle();
 
-        Container.Bind<Helper>().FromNew().AsSingle();
+        BindPopupTextService();
     }
 
     private void BindPopupTextService()

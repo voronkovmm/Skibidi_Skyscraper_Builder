@@ -1,4 +1,5 @@
-﻿public class DataSkinAsset
+﻿[System.Serializable]
+public class DataSkinAsset
 {
     public EnumSkinAsset CurrentAsset { get; private set; }
     public bool IsSkibidiUnlocked { get; private set; }

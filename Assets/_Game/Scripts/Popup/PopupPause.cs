@@ -10,13 +10,13 @@ public class PopupPause : MonoBehaviour
 
     public void Open()
     {
-        GameManager.Pause();
+        GlobalUpdate.Pause();
         container.SetActive(true);
     }
 
     public void Close()
     {
-        GameManager.Play();
+        GlobalUpdate.Play();
         container.SetActive(false);
     }
 
