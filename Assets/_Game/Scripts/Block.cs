@@ -38,11 +38,10 @@ public class Block : MonoBehaviour, IBlock
             Debug.Log($"выполнился коллайдер {gameObject.name}");
             rigidbody2d.velocity *= 0.25f;
             CollisionWithBuilding(collision.transform, collision.rigidbody);
-            //CalculateScore(collision);
         }
         else if (buildingManager.HeightBuilding == 0)
         {
-            buildingManager.TowerAddBlock(this);
+            buildingManager.AddBlock(this);
             isConnectedToBuilding = true;
             return;
         }
@@ -98,16 +97,6 @@ public class Block : MonoBehaviour, IBlock
 
     public void Strengthen() => rigidbody2d.bodyType = RigidbodyType2D.Static;
 
-    private void CalculateScore(Collision2D collision)
-    {
-        float width = spriteRenderer.bounds.size.x;
-        float distanceX = Mathf.Abs(transform.position.x - collision.transform.position.x);
-        float normalizedDistance = Mathf.Clamp01(distanceX / width);
-        int score = Mathf.RoundToInt(5f * (1f - normalizedDistance));
-        //popupText.Show(transform.position, score.ToString(), RatingColor.GetColor(score));
-    }
-
-    // отслеживаем его - если он пролетел верхний блок - ставим его в мис
     private void CollisionWithBuilding(Transform collisionTransform, Rigidbody2D collisionRigidbody)
     {
         float distanceX = Mathf.Abs(transform.position.x - collisionTransform.transform.position.x);
@@ -120,7 +109,7 @@ public class Block : MonoBehaviour, IBlock
             joint.connectedBody = collisionRigidbody;
 
             isConnectedToBuilding = true;
-            buildingManager.TowerAddBlock(this);
+            buildingManager.AddBlock(this);
         }
         else
             MissBlock();
@@ -161,6 +150,7 @@ public class Block : MonoBehaviour, IBlock
             .OnComplete(() =>
             {
                 buildingManager.BlockMiss();
+                buildingManager.CalculateScore(this);
                 Deactivate();
             });
     }

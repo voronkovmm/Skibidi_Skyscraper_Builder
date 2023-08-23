@@ -1119,7 +1119,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1080, y: 1920}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -1844,10 +1844,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1290574973}
     m_Modifications:
-    - target: {fileID: 2804730211966308256, guid: a5a87046f347b8b4e94d37f7f108b2e6, type: 3}
-      propertyPath: EnableGame
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7165566232536845703, guid: a5a87046f347b8b4e94d37f7f108b2e6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1949,14 +1945,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2174893880913154224, guid: bb7a40e5f76aa764db4adbfe4b34eb89, type: 3}
-      propertyPath: CameraOffsetMovement
-      value: 6.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2174893880913154224, guid: bb7a40e5f76aa764db4adbfe4b34eb89, type: 3}
-      propertyPath: SkipBlocksForMovement
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8612299282092213153, guid: bb7a40e5f76aa764db4adbfe4b34eb89, type: 3}
       propertyPath: m_Name
       value: BuildingManager

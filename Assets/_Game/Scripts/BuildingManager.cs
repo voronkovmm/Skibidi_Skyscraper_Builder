@@ -166,22 +166,38 @@ public class BuildingManager : MonoCash
         HookIncreaseSpeed();
     }
 
-    public void TowerAddBlock(IBlock buildingBlock)
+    public void AddBlock(IBlock buildingBlock)
     {
-        tower.Add(buildingBlock);
+        CalculateScore(buildingBlock);
         
-        HeightBuilding++;
+        tower.Add(buildingBlock);
 
-        if (HeightBuilding == 2)
+        HeightBuilding++;
+        
+        if (HeightBuilding > 9 && HeightBuilding % 5 == 0) 
+            CleanTower(5);
+        else if (HeightBuilding == 2)
         {
             tower[0].Strengthen();
+        }
+        else if (HeightBuilding == 3)
+        {
             tower[1].SetBreakTorque();
         }
-        else if (HeightBuilding > 9 && HeightBuilding % 5 == 0) CleanTower(5);
 
         MovementUpOrDown();
 
         CreateNewBlock();
+    }
+
+    public void CalculateScore(IBlock newBlock)
+    {
+        if (HeightBuilding == 0) return;
+        float distanceX = Mathf.Abs(newBlock.GetTransform().position.x - tower[^1].GetTransform().position.x);
+        float normalizedDistance = Mathf.Clamp01(distanceX / BlockHalfWidth);
+        float score = 5f * (1f - normalizedDistance);
+        if (score < 2.5f) score = 2.5f;
+        ViewGame.FillScore(score);
     }
 
     private void TowerRestart()
