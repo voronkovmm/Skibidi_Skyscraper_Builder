@@ -12,6 +12,10 @@ public class BuildingManager : MonoCash
     [Inject] private CameraMovement CameraMovement;
     [Inject] private ViewGame ViewGame;
 
+    [Header("Main")]
+    [SerializeField] public int SkipBlocksForMovement = 1;
+    [SerializeField] public float CameraOffsetMovement = 9;
+
     [Header("Hook")]
     [SerializeField] private float hookRadiusY = 0.25f;
     [SerializeField] private float hookRadiusX = 1f;
@@ -26,10 +30,10 @@ public class BuildingManager : MonoCash
 
     [Header("Block")]
     [SerializeField] public float AttachmentDelay = 2;
-    [SerializeField] private float offsetSpawnY = 1;    
+    [SerializeField] private float offsetSpawnY = 1;
     public float BlockHeight { get; private set; }
     public float BlockWidth { get; private set; }
-    public readonly int SkipBlocksForMovement = 1;
+    public float BlockHalfWidth { get; private set; }
     private bool isNewBlockReady;
     private IBlock blockCurrent;
 
@@ -38,9 +42,11 @@ public class BuildingManager : MonoCash
     [SerializeField] private float blockDurationShake = 0.2f;
     [SerializeField] private Vector3 blockStrengthShake;
 
+    public Vector3 TopBlockPos{ get => tower[^1].GetTransform().position; }
+
 
     public int HeightBuilding { get; private set; }
-    private Queue<IBlock> tower = new();
+    private List<IBlock> tower = new();
 
     public override void OnTick()
     {
@@ -52,6 +58,7 @@ public class BuildingManager : MonoCash
         HookMovementCircle();
     }
 
+    float startDistanceHook;
     public void Initialize()
     {
         BlockCreater.Initialize();
@@ -64,6 +71,11 @@ public class BuildingManager : MonoCash
         SpriteRenderer buildingBlockSpriteRenderer = AccountManager.LoaderAsset.BlockPrefab.GetComponent<SpriteRenderer>();
         BlockHeight = buildingBlockSpriteRenderer.bounds.size.y;
         BlockWidth = buildingBlockSpriteRenderer.bounds.size.x;
+        BlockHalfWidth = BlockWidth / 2;
+
+        Vector3 bottomScreenPosition = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2f, 0f, Camera.main.nearClipPlane));
+        Vector3 di = hookTransform.position + bottomScreenPosition;
+        startDistanceHook = Vector3.Distance(hookTransform.position, bottomScreenPosition);
     }
 
     public void OnExitMenu()
@@ -73,6 +85,8 @@ public class BuildingManager : MonoCash
         HookRestart();
         TowerRestart();
     }
+
+    public void BlockMiss() => CreateNewBlock();
 
     public void ThrowBlock()
     {
@@ -88,6 +102,8 @@ public class BuildingManager : MonoCash
 
     private void CreateNewBlock()
     {
+        if (hookTransform.childCount >= 1) return;
+
         IBlock buildingBlock = BlockCreater.Get(hookTransform.position + Vector3.down * offsetSpawnY);
         buildingBlock.SetParent(hookTransform);
 
@@ -102,6 +118,7 @@ public class BuildingManager : MonoCash
             .Append(blockTransform.DOPunchScale(blockStrengthShake, blockDurationShake, blockVibratoShake, 0))
             .OnComplete(() => isNewBlockReady = true);
     }
+
 
     #region Hook
 
@@ -141,7 +158,7 @@ public class BuildingManager : MonoCash
         hookTweenerMovement = DOTween.To(
             () => hookCenterPos,
             x => hookCenterPos = x,
-            new Vector3(hookCenterPos.x, hookStartPos.y + (HeightBuilding - SkipBlocksForMovement) * BlockHeight),
+            new Vector3(hookCenterPos.x, TopBlockPos.y + CameraOffsetMovement),
             1);
 
         CameraMovement.Move();
@@ -151,16 +168,16 @@ public class BuildingManager : MonoCash
 
     public void TowerAddBlock(IBlock buildingBlock)
     {
-        tower.Enqueue(buildingBlock);
+        tower.Add(buildingBlock);
         
         HeightBuilding++;
 
         if (HeightBuilding == 2)
         {
-            tower.Peek().Strengthen();
-            tower.ElementAt(1).SetBreakTorque();
+            tower[0].Strengthen();
+            tower[1].SetBreakTorque();
         }
-        else if (HeightBuilding % 10 == 0) CleanTower(5);
+        else if (HeightBuilding > 9 && HeightBuilding % 5 == 0) CleanTower(5);
 
         MovementUpOrDown();
 
@@ -177,12 +194,14 @@ public class BuildingManager : MonoCash
     {
         for (int i = 0; i < count; i++)
         {
-            IBlock buildingBlock = tower.Dequeue();
+            IBlock buildingBlock = tower[i];
             buildingBlock.Deactivate();
         }
 
-        tower.Peek().Strengthen();
-        tower.ElementAt(1).SetBreakTorque();
+        tower = tower.Skip(5).ToList();
+
+        tower[0].Strengthen();
+        tower[1].SetBreakTorque();
     }
 
     #endregion

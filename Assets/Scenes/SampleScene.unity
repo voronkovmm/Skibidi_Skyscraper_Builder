@@ -924,7 +924,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &800672750
 BoxCollider2D:
@@ -1949,13 +1949,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2174893880913154224, guid: bb7a40e5f76aa764db4adbfe4b34eb89, type: 3}
+      propertyPath: CameraOffsetMovement
+      value: 6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2174893880913154224, guid: bb7a40e5f76aa764db4adbfe4b34eb89, type: 3}
+      propertyPath: SkipBlocksForMovement
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8612299282092213153, guid: bb7a40e5f76aa764db4adbfe4b34eb89, type: 3}
       propertyPath: m_Name
       value: BuildingManager
       objectReference: {fileID: 0}
     - target: {fileID: 9203235210124436493, guid: bb7a40e5f76aa764db4adbfe4b34eb89, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9203235210124436493, guid: bb7a40e5f76aa764db4adbfe4b34eb89, type: 3}
       propertyPath: m_LocalPosition.x

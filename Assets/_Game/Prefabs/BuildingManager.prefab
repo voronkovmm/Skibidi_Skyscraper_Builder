@@ -115,7 +115,7 @@ Transform:
   m_Children:
   - {fileID: 1993288152892012376}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2174893880913154224
 MonoBehaviour:
@@ -129,6 +129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab2f6f58555fccc46b9477e5487afaea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SkipBlocksForMovement: 2
+  CameraOffsetMovement: 6.5
   hookRadiusY: 0.25
   hookRadiusX: 1.8
   hookMovementSpeed: 2
@@ -136,7 +138,6 @@ MonoBehaviour:
   hookTransform: {fileID: 1993288152892012376}
   AttachmentDelay: 2
   offsetSpawnY: 1
-  cooldownNewBlock: 0.5
   blockVibratoShake: 1
   blockDurationShake: 0.2
   blockStrengthShake: {x: 0, y: 0, z: 0}
