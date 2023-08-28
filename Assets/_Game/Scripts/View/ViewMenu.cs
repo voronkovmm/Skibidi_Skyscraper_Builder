@@ -15,6 +15,8 @@ public class ViewMenu : MonoBehaviour
 
     private void Start()
     {
+        GlobalUpdate.Play();
+
         if (EnableGame)
         {
             ViewGame.Open();

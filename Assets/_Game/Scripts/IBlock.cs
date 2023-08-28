@@ -8,7 +8,7 @@ public interface IBlock
 
     public void Deactivate();
 
-    public void Initialize(BlockCreater pool, int poolIndex, Sprite sprite);
+    public void Initialize(BlockCreator pool, int poolIndex, Sprite sprite);
 
     public void SetParent(Transform parent);
 
@@ -19,4 +19,6 @@ public interface IBlock
     public void SetBreakTorque();
 
     public Transform GetTransform();
+
+    public void Fixation();
 }

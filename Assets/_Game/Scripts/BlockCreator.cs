@@ -2,7 +2,7 @@
 using UnityEngine;
 using Zenject;
 
-public class BlockCreater
+public class BlockCreator
 {
     [Inject] private DiContainer Container;
     [Inject] private AccountManager AccountManager;

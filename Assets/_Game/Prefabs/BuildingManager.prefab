@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &483858005951161765
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1823682764656968519}
+  m_Layer: 0
+  m_Name: '[TRFM] ParentBlock'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1823682764656968519
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483858005951161765}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9203235210124436493}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &760524202251533235
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,8 +145,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1993288152892012376}
+  - {fileID: 1823682764656968519}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2174893880913154224
 MonoBehaviour:
@@ -131,6 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkipBlocksForMovement: 2
   CameraOffsetMovement: 6.5
+  prefabRoof: {fileID: 5671377681687125013, guid: 51504e719eecb514c8c11eff42cced5d, type: 3}
   hookRadiusY: 0.25
   hookRadiusX: 1.8
   hookMovementSpeed: 2
@@ -138,6 +171,7 @@ MonoBehaviour:
   hookTransform: {fileID: 1993288152892012376}
   AttachmentDelay: 2
   offsetSpawnY: 1
+  ParentBlock: {fileID: 1823682764656968519}
   blockVibratoShake: 1
   blockDurationShake: 0.2
   blockStrengthShake: {x: 0, y: 0, z: 0}

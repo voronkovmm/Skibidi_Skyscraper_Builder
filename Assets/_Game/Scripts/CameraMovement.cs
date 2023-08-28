@@ -14,7 +14,7 @@ public class CameraMovement : MonoBehaviour
     public void Move()
     {
         tweenerMovement.Kill();
-        tweenerMovement = transform.DOMoveY(startPos.y + (BuildingManager.HeightBuilding - BuildingManager.SkipBlocksForMovement) * BuildingManager.BlockHeight, 1f);
+        tweenerMovement = transform.DOMoveY(startPos.y + (BuildingManager.TotalHeightBuilding - BuildingManager.SkipBlocksForMovement) * BuildingManager.BlockHeight, 1f);
     }
 
     public void Restart()

@@ -19,4 +19,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1d76c0a56dccf09408e288553a158df9, type: 2}
   - {fileID: 11400000, guid: 647caaf99460fed4f9ddcbd21ebb5bff, type: 2}
   BlockPrefab: {fileID: 5627741338130740108, guid: 4d542624787b0bf4c8464d4377954e02, type: 3}
+  PrefabCitizen: {fileID: 4087427159114445578, guid: d177d044ed2f0d04a9a9631d278f6b43, type: 3}
   PopupTextPrefab: {fileID: 0}

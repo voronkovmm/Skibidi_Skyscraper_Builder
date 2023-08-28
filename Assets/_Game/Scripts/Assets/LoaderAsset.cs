@@ -5,5 +5,6 @@ public class LoaderAsset : ScriptableObject
 {
     public BlockAsset[] BlockAssets;
     public Block BlockPrefab;
+    public Citizen PrefabCitizen;
     public PopupText PopupTextPrefab;
 }

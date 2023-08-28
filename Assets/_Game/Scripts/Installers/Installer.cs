@@ -13,6 +13,8 @@ public class Installer : MonoInstaller
         Container.Bind<ViewMenu>().FromComponentInHierarchy().AsSingle();
         Container.Bind<ViewGame>().FromComponentInHierarchy().AsSingle();
         
+        Container.Bind<WidgetSliderScore>().FromComponentInHierarchy().AsSingle();
+        
         Container.Bind<PopupSettings>().FromComponentInHierarchy().AsSingle();
         Container.Bind<PopupLeaderboard>().FromComponentInHierarchy().AsSingle();
         Container.Bind<PopupAchivements>().FromComponentInHierarchy().AsSingle();
@@ -21,19 +23,7 @@ public class Installer : MonoInstaller
 
         Container.Bind<CameraMovement>().FromComponentInHierarchy().AsSingle();
 
-        Container.Bind<BlockCreater>().FromNew().AsSingle();
-
-        BindPopupTextService();
-    }
-
-    private void BindPopupTextService()
-    {
-        /*PopupText popupTextPrefab = loaderAssets[indexLoaderAsset].popupTextPrefab;
-
-        Container.Bind<PopupTextService>()
-            .FromNew()
-            .AsSingle()
-            .WithArguments(popupTextPrefab)
-            .NonLazy();*/
+        Container.Bind<BlockCreator>().FromNew().AsSingle();
+        Container.Bind<CitizenCreator>().FromNew().AsSingle();
     }
 }

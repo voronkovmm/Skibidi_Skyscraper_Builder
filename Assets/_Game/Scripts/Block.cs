@@ -10,11 +10,12 @@ public class Block : MonoBehaviour, IBlock
     private int poolIndex;
     private bool isConnectedToBuilding;
     private bool isMiss;
-
+    
+    [SerializeField] private SpriteRenderer spriteFixation;
     private Tween tween;
     private Rigidbody2D rigidbody2d;
     private BoxCollider2D boxCollider2d;
-    private BlockCreater pool;
+    private BlockCreator pool;
     private FixedJoint2D joint;
     private SpriteRenderer spriteRenderer;
 
@@ -31,15 +32,14 @@ public class Block : MonoBehaviour, IBlock
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(isConnectedToBuilding 
-            || (buildingManager.HeightBuilding > 0 && buildingManager.TopBlockPos.y > transform.position.y)) return;
+            || (buildingManager.TotalHeightBuilding > 0 && buildingManager.TopBlockPos.y > transform.position.y)) return;
 
         if (collision.collider.TryGetComponent(out Block block))
         {
-            Debug.Log($"выполнился коллайдер {gameObject.name}");
             rigidbody2d.velocity *= 0.25f;
             CollisionWithBuilding(collision.transform, collision.rigidbody);
         }
-        else if (buildingManager.HeightBuilding == 0)
+        else if (buildingManager.TotalHeightBuilding == 0)
         {
             buildingManager.AddBlock(this);
             isConnectedToBuilding = true;
@@ -47,7 +47,7 @@ public class Block : MonoBehaviour, IBlock
         }
     }
 
-    public void Initialize(BlockCreater pool, int poolIndex, Sprite sprite)
+    public void Initialize(BlockCreator pool, int poolIndex, Sprite sprite)
     {
         this.pool = pool;
         this.poolIndex = poolIndex;
@@ -63,6 +63,7 @@ public class Block : MonoBehaviour, IBlock
         rigidbody2d.bodyType = RigidbodyType2D.Kinematic;
         transform.position = position;
         transform.rotation = Quaternion.Euler(0, 0, 0);
+        spriteFixation.enabled = false;
         isConnectedToBuilding = false;
         boxCollider2d.enabled = true;
         isMiss = false;
@@ -91,6 +92,8 @@ public class Block : MonoBehaviour, IBlock
         rigidbody2d.bodyType = RigidbodyType2D.Dynamic;
     }
 
+    public void Fixation() => spriteFixation.enabled = true;
+
     public void SetParent(Transform parent) => transform.SetParent(parent);
 
     public void SetBreakTorque() => joint.breakTorque = 150f;
@@ -117,7 +120,7 @@ public class Block : MonoBehaviour, IBlock
 
     private IEnumerator CheckPosition()
     {
-        if (buildingManager.HeightBuilding == 0) yield break;
+        if (buildingManager.TotalHeightBuilding == 0) yield break;
 
         float timer = 3;
         while((timer -= Time.deltaTime) > 0)
@@ -150,7 +153,6 @@ public class Block : MonoBehaviour, IBlock
             .OnComplete(() =>
             {
                 buildingManager.BlockMiss();
-                buildingManager.CalculateScore(this);
                 Deactivate();
             });
     }
